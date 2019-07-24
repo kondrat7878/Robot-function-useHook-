@@ -1,38 +1,49 @@
-import React , {useContext} from 'react';
+import React , {useContext , memo} from 'react';
 import styled from 'styled-components';
-import {Context} from "../store/store";
+ import {Context} from "../store/store";
+import {BrowserRouter , Route , Switch , Redirect} from 'react-router-dom';
 
-import FilterList from '../filter_list/filter_list';
-import List from '../list/list';
+
 import Profile from '../profile/profile';
+import PageNotFound from '../page_not_found/page_not_found';
+import CreateNewRobot from '../create_new_robot/create_new_robot';
 import './main.css';
+import Home from '../home/home';
+import NavBar from '../nav_bar/nav_bar'
+
 
 
 const App = () => {
 
-    const {toggle} = useContext(Context);
+     const {login_out} = useContext(Context);
 
     return (
-        <Box>
-            {toggle === false ? (
-                <div>
-                    <FilterList />
-                    <ContentBox>
-                        <Profile />
-                        <List />
-                    </ContentBox>
-                </div>
-            ) : (
-                <>
-                    <img src="https://i.gifer.com/VAyR.gif" alt="loader"/>
-                    <H1>....is Loading</H1>
-                </>
-            )}
-        </Box>
+        <BrowserRouter>
+          <div className={`container`}>
+            <NavBar/>
+            <Box>
+                    <Switch>
+                        <Route
+                            path={`/`} exact
+                            component={Home}/>
+                        <Route
+                            path={'/page_2'} exact
+                            component={Profile} />
+                        <Route
+                            path="/page_3"
+                            render={() =>
+                                login_out === true ? <CreateNewRobot /> : <Redirect to="/"  />
+                            }
+                        />
+                        <Route  component={PageNotFound} />
+                    </Switch>
+            </Box>
+          </div>
+        </BrowserRouter>
     );
 };
 
-export default App;
+export default memo(App);
 
 const Box = styled.div`
   background: Cornsilk;
@@ -43,12 +54,4 @@ const Box = styled.div`
   box-shadow: 0 0.4rem 1.5rem DimGrey;
   position: relative;
   margin-top: 7rem;
-`;
-const ContentBox = styled.div`
-  /*border:red solid 2px;*/
-  border-radius: 5px;
-  display: flex`;
-
-const H1 = styled.h1`
-font-size: 50px;
 `;

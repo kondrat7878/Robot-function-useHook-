@@ -12,6 +12,7 @@ const Store = ({children}) => {
     const [filter_list ,setFilterList] = useState(displayed_list);
     const [profile , setProfile] = useState(displayed_list[2]);
     const [toggle , setToggle] =useState(true);
+    const [login_out , setLogInOut] = useState(false);
 
     useEffect(() => {
         Get_data();
@@ -31,13 +32,15 @@ const Store = ({children}) => {
         displayed_list,
         filter_list,
         profile,
-        toggle
+        toggle,
+        login_out
     };
 
     const action = {
         setDisplayedList,
         setFilterList,
-        setProfile
+        setProfile,
+        setLogInOut
     };
     return (
         <Provider value = {{...state , ...action }}>

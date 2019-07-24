@@ -13,7 +13,7 @@ const Profile = () => {
         description ,
         last_name
     } = profile;
-    let ava = avatar.replace('80x80' , '300x300');
+    let ava = avatar.replace('80x80' , '200x200');
     return (
         <div className="profile-box">
             <div className={`profile-image-box`}>
@@ -47,7 +47,7 @@ color: blue;
 `;
 const P = styled.p`
 color: #ff1291;
-font-size: 15px;
+font-size: 10px;
 font-weight: 700;
 &:hover{
 color: blue;
