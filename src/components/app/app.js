@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {BrowserRouter , Route , Switch , Redirect} from 'react-router-dom';
 
 
-import Profile from '../profile/profile';
+import Profile from '../home/profile/profile';
 import PageNotFound from '../page_not_found/page_not_found';
 import CreateNewRobot from '../create_new_robot/create_new_robot';
 import './main.css';

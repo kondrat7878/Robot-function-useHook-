@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
-import FilterList from "../filter_list/filter_list";
-import Profile from "../profile/profile";
-import List from "../list/list";
+import FilterList from "./filter_list/filter_list";
+import Profile from "./profile/profile";
+import List from "./list/list";
 import {Context} from "../store/store";
 import styled from "styled-components";
 
@@ -19,10 +19,10 @@ const Home = () => {
                     </ContentBox>
                 </div>
             ) : (
-                <>
+                <Div>
                     <img src="https://i.gifer.com/VAyR.gif" alt="loader"/>
                     <H1>....is Loading</H1>
-                </>
+                </Div>
                 )}
         </div>
     );
@@ -38,4 +38,8 @@ const ContentBox = styled.div`
 
 const H1 = styled.h1`
 font-size: 50px;
+`;
+const Div = styled.div`
+width: 100%;
+text-align: center;
 `;

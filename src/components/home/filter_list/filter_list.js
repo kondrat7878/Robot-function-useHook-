@@ -1,5 +1,5 @@
 import React , {useContext} from 'react';
-import {Context} from '../store/store';
+import {Context} from '../../store/store';
 
 const FilterList = () => {
     const {setFilterList , filter_list , displayed_list} = useContext(Context);
